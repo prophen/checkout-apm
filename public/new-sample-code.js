@@ -1,9 +1,11 @@
 // Render the PayPal marks
-paypal.Marks().render("#paypal-marks-container");
+paypal.Marks({ fundingSource: "paypal" }).render("#paypal-mark-container");
+paypal.Marks({ fundingSource: "card" }).render("#card-mark-container");
+paypal.Marks({ fundingSource: "paylater" }).render("#paylater-mark-container");
 
-// Render the PayPal buttons
 paypal
   .Buttons({
+    fundingSource: "paypal",
     // Sets up the transaction when a payment button is clicked
     createOrder: function () {
       return fetch("/my-server/create-paypal-order", {
@@ -59,7 +61,17 @@ paypal
         });
     },
   })
-  .render("#paypal-buttons-container");
+  .render("#paypal-button-container");
+paypal
+  .Buttons({
+    fundingSource: "card",
+  })
+  .render("#card-button-container");
+paypal
+  .Buttons({
+    fundingSource: "paylater",
+  })
+  .render("#paylater-button-container");
 
 // Listen for changes to the radio buttons
 document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
@@ -68,15 +80,42 @@ document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
     if (event.target.value === "paypal") {
       document.body.querySelector("#alternate-button-container").style.display =
         "none";
-      document.body.querySelector("#paypal-buttons-container").style.display =
+      document.body.querySelector("#paypal-button-container").style.display =
+        "block";
+      document.body.querySelector("#card-button-container").style.display =
+        "none";
+      document.body.querySelector("#paylater-button-container").style.display =
+        "none";
+    }
+    if (event.target.value === "card") {
+      document.body.querySelector("#alternate-button-container").style.display =
+        "none";
+      document.body.querySelector("#card-button-container").style.display =
+        "block";
+      document.body.querySelector("#paypal-button-container").style.display =
+        "none";
+      document.body.querySelector("#paylater-button-container").style.display =
+        "none";
+    }
+    if (event.target.value === "paylater") {
+      document.body.querySelector("#alternate-button-container").style.display =
+        "none";
+      document.body.querySelector("#card-button-container").style.display =
+        "none";
+      document.body.querySelector("#paypal-button-container").style.display =
+        "none";
+      document.body.querySelector("#paylater-button-container").style.display =
         "block";
     }
-
     // If alternate funding is selected, show a different button
     if (event.target.value === "alternate") {
       document.body.querySelector("#alternate-button-container").style.display =
         "block";
-      document.body.querySelector("#paypal-buttons-container").style.display =
+      document.body.querySelector("#paypal-button-container").style.display =
+        "none";
+      document.body.querySelector("#paylater-button-container").style.display =
+        "none";
+      document.body.querySelector("#card-button-container").style.display =
         "none";
     }
   });
@@ -84,4 +123,7 @@ document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
 
 // Hide non-PayPal button by default
 document.body.querySelector("#alternate-button-container").style.display =
+  "none";
+document.body.querySelector("#card-button-container").style.display = "none";
+document.body.querySelector("#paylater-button-container").style.display =
   "none";

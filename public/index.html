@@ -6,11 +6,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container mt-3">
       <!-- Replace "test" with your own sandbox Business account app client ID -->
       <script src="https://www.paypal.com/sdk/js?client-id=AQakenSQLxZzDtdRrZLDBcnBkOptgFnXZBCSvfDxyFieQv8tnVEk5QlBZr0a-8RjToitvoEg6m_Xy4jn&currency=USD&components=buttons,funding-eligibility,marks"></script>
+
       <h1 class="title is-1">Checkout</h1>
       <div class="columns">
         <div class="column is-two-fifths">
@@ -28,8 +30,11 @@
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="title is-4">1x Fancy Watch</p>
-                  <p class="subtitle is-6">$100</p>
+                  <p class="title is-4">Fancy Watch</p>
+                  <div class="is-flex is-justify-content-space-between">
+                    <span class="is-size-7">qty: 1</span>
+                    <span class="subtitle has-text-right">$100</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -39,7 +44,7 @@
         <!-- Render the radio buttons and marks -->
         <div class="column">
           <div class="box">
-            <h2 class="title is 2">Cart total: $100</h2>
+            <h2 class="title is 2 has-text-right">Cart total: $100</h2>
             <form>
               <label>
                 <input
@@ -48,25 +53,38 @@
                   value="paypal"
                   checked
                 />
-                Pay With PayPal
-                <div id="paypal-marks-container"></div>
-              </label>
 
+                <div id="paypal-mark-container"></div>
+              </label>
               <label>
-                <input type="radio" name="payment-option" value="alternate" />
-                Alternative Payment Method
+                <input type="radio" name="payment-option" value="card" />
+
+                <div id="card-mark-container"></div>
+              </label>
+              <label>
+                <input type="radio" name="payment-option" value="paylater" />
+
+                <div id="paylater-mark-container"></div>
               </label>
 
-              <div id="paypal-buttons-container"></div>
-              <div id="alternate-button-container">
-                <button>Pay with a different method</button>
-              </div>
+              <label class="mt-3 mb-3">
+                <input type="radio" name="payment-option" value="alternate" />
+                &nbsp; Pay with Monkey Cash
+              </label>
 
-              <script src="./new-sample-code.js"></script>
+              <div id="paypal-button-container"></div>
+              <div id="card-button-container"></div>
+              <div id="paylater-button-container"></div>
+              <div class="mt-3" id="alternate-button-container">
+                <button class="button is-large is-primary is-fullwidth">
+                  Pay with Monkey Cash
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <script src="./new-sample-code.js"></script>
   </body>
 </html>
