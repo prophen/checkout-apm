@@ -1,5 +1,5 @@
 {
-  "name": "@paypalcorp/standard-integration",
+  "name": "checkout-alternative-payment-methods",
   "version": "1.0.0",
   "main": "paypal-api.js",
   "type": "module",
