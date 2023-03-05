@@ -119,7 +119,7 @@ document.querySelectorAll("input[name=payment-option]").forEach(function (el) {
   });
 });
 
-// Hide non-PayPal button by default
+// Hide non-PayPal buttons by default
 document.body.querySelector("#alternative-button-container").style.display =
   "none";
 document.body.querySelector("#card-button-container").style.display = "none";

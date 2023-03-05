@@ -31,11 +31,8 @@
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="title is-4">Fancy Watch</p>
-                  <div class="is-flex is-justify-content-space-between">
-                    <span class="is-size-7">qty: 1</span>
-                    <span class="subtitle has-text-right">$100</span>
-                  </div>
+                  <p class="title is-5">Fancy Watch</p>
+                  <p class="subtitle is-6">$100</p>
                 </div>
               </div>
             </div>
@@ -45,7 +42,7 @@
         <!-- Render the radio buttons and marks -->
         <div class="column">
           <div class="box">
-            <h2 class="title is 2 has-text-right">Cart total: $100</h2>
+            <h2 class="title is-4 has-text-right">Cart total: $100</h2>
             <form>
               <label>
                 <input
@@ -58,14 +55,15 @@
                 <div id="paypal-mark-container"></div>
               </label>
               <label>
-                <input type="radio" name="payment-option" value="card" />
-
-                <div id="card-mark-container"></div>
-              </label>
-              <label>
                 <input type="radio" name="payment-option" value="paylater" />
 
                 <div id="paylater-mark-container"></div>
+              </label>
+
+              <label>
+                <input type="radio" name="payment-option" value="card" />
+
+                <div id="card-mark-container"></div>
               </label>
 
               <label class="mt-3 mb-3">
@@ -74,8 +72,8 @@
               </label>
 
               <div id="paypal-button-container"></div>
-              <div id="card-button-container"></div>
               <div id="paylater-button-container"></div>
+              <div id="card-button-container"></div>
               <div class="mt-3" id="alternative-button-container">
                 <button class="button is-medium is-primary is-fullwidth">
                   Continue to Monkey Cash Checkout
